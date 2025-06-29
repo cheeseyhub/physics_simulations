@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice the ball movement</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        overflow: hidden;
+      }
+      #canvas {
+        background-color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext("2d");
+
+      let cursorPosition = { x: 0, y: 0 };
+      let mousePosition = { x: 0, y: 0 };
+      let acceleration = { x: 0, y: 0 };
+      let radiusX = 10;
+      let radiusY = 10;
+
+      function drawCursor(x, y, radiusX, radiusY, color) {
+        ctx.beginPath();
+        ctx.ellipse(x, y, radiusX, radiusY, 0, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.closePath();
+      }
+      function setMagnitude(vector, magnitude) {
+        const currentMagnitude = Math.sqrt(
+          vector.x * vector.x + vector.y * vector.y
+        );
+        return {
+          x: (vector.x / currentMagnitude) * magnitude,
+          y: (vector.y / currentMagnitude) * magnitude,
+        };
+      }
+      document.addEventListener("mousemove", (event) => {
+        mousePosition = {
+          x: event.clientX,
+          y: event.clientY,
+        };
+        acceleration = {
+          x: event.clientX - cursorPosition.x,
+          y: event.clientY - cursorPosition.y,
+        };
+        acceleration = setMagnitude(acceleration, 10);
+      });
+      function animation() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //If the difference of cursor Position and mousePosition is greater than 10 pixels, then the cursor will move with acceleration.
+        if (
+          Math.abs(cursorPosition.x - mousePosition.x) > 10 ||
+          Math.abs(cursorPosition.y - mousePosition.y) > 10
+        ) {
+          radiusY = 7;
+          cursorPosition.x += acceleration.x;
+          cursorPosition.y += acceleration.y;
+        } else {
+          radiusY = 10;
+          cursorPosition.x = mousePosition.x;
+          cursorPosition.y = mousePosition.y;
+        }
+        drawCursor(
+          cursorPosition.x,
+          cursorPosition.y,
+          radiusX,
+          radiusY,
+          "white"
+        );
+        requestAnimationFrame(animation);
+      }
+      animation();
+    </script>
+  </body>
+</html>
