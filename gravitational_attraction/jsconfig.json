@@ -5,6 +5,7 @@
   "include": [
     "*.js",
     "**/*.js",
-    "/home/ibrahim/.vscode/extensions/samplavigne.p5-vscode-1.2.16/p5types/global.d.ts"
+    "/home/ibrahim/.vscode/extensions/samplavigne.p5-vscode-1.2.16/p5types/global.d.ts",
+    "nodes_modules/@types/p5/global.d.ts"
   ]
 }

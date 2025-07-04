@@ -1,17 +1,25 @@
 class Mover {
-  constructor(x, y, mass, color) {
+  constructor(x, y, vx, vy, mass) {
     this.pos = createVector(x, y);
-    this.color = color;
     this.mouse = createVector(mouseX, mouseY);
-    this.velocity = createVector(random(5), random(5));
+    this.velocity = createVector(vx, vy);
     this.acceleration = createVector(0, 0);
     this.mass = mass;
     this.radius = sqrt(this.mass) * 7;
   }
+  attract(mover) {
+    let force = p5.Vector.sub(mover.pos, this.pos);
+    let distance = constrain(force.magSq(), 100, 1000);
+
+    let G = 0.1;
+    let strength = G * (this.mass * mover.mass) / distance;
+    force.setMag(strength);
+    this.applyForce(force);
+  }
   applyForce(force) {
-    let f = p5.Vector.div(force,this.mass);
-   this.acceleration.add(f)
-}
+    let f = p5.Vector.div(force, this.mass);
+    this.acceleration.add(f);
+  }
   collisionDetection() {
     if (this.pos.x + this.radius >= width) {
       this.pos.x = width - this.radius;
@@ -36,7 +44,7 @@ class Mover {
     this.velocity.add(this.acceleration);
     this.pos.add(this.velocity);
 
-    this.acceleration.setMag(0,0)
+    this.acceleration.set(0);
     circle(this.pos.x, this.pos.y, this.radius);
   }
 }

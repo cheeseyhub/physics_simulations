@@ -1,0 +1,23 @@
+{
+  "name": "physics_simulations",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheeseyhub/physics_simulations.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheeseyhub/physics_simulations/issues"
+  },
+  "homepage": "https://github.com/cheeseyhub/physics_simulations#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/p5": "^1.7.6"
+  }
+}
