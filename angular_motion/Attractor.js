@@ -1,3 +1,4 @@
+
 class Attractor {
   constructor(x, y, mass) {
     this.pos = createVector(x, y);
