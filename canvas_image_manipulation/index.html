@@ -1,0 +1,35 @@
+<DOCTYPE html>
+  <html>
+    <head lang="en">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Image manipulation</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        #canvas {
+          position: absolute;
+        }
+        img {
+          display: none;
+        }
+        .controls {
+          top: 0;
+          left: 0;
+          position: absolute;
+          z-index: 100;
+        }
+      </style>
+    </head>
+    <body>
+      <canvas id="canvas"></canvas>
+      <img src="tree.jpg" />
+      <div class="controls">
+        <button id="warp_button">Warp</button>
+      </div>
+      <script src="script.js" defer></script>
+    </body>
+  </html>
+</DOCTYPE>
