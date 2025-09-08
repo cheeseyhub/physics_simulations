@@ -65,7 +65,7 @@ class Effect {
     this.x = this.centerX - this.image.width * 0.5;
     this.y = this.centerY - this.image.height * 0.5;
 
-    this.gap = 4;
+    this.gap = 10;
 
     this.radius = 400;
     this.mouseX = 0;
