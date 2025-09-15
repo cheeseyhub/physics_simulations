@@ -12,7 +12,7 @@ class Mover {
     let distance = constrain(force.magSq(), 100, 1000);
 
     let G = 1;
-    let strength = G * (this.mass * mover.mass) / distance;
+    let strength = (G * (this.mass * mover.mass)) / distance;
     force.setMag(strength);
     this.applyForce(force);
   }

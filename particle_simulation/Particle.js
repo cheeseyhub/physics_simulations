@@ -1,5 +1,5 @@
 class Particle {
-  constructor(x, y, velocity, color) {
+  constructor(x, y, color) {
     this.x = x;
     this.y = y;
     this.velocity = p5.Vector.random2D();
@@ -17,7 +17,7 @@ class Particle {
   update() {
     this.y += this.velocity.y += this.gravity;
     this.x += this.velocity.x;
-    this.lifetime -= 1;
+    this.lifetime -= 2;
   }
   remove() {
     if (this.lifetime < 100) {

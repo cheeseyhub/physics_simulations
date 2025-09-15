@@ -19,5 +19,8 @@
   "description": "",
   "devDependencies": {
     "@types/p5": "^1.7.6"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }
