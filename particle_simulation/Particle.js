@@ -5,17 +5,19 @@ class Particle {
     this.velocity = p5.Vector.random2D();
     this.color = color;
     this.lifetime = 255;
-    this.gravity = 0.9;
+    this.radius = 5;
   }
 
   draw() {
-    stroke(this.color, this.lifetime);
-    strokeWeight(2);
-    fill(this.color, this.lifetime);
-    ellipse(this.x, this.y, 10, 10);
+    imageMode(CENTER);
+    image(img, this.x, this.y, this.radius * 2, this.radius * 2);
+    //ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
+  }
+  applyForce(force) {
+    this.velocity.add(force);
   }
   update() {
-    this.y += this.velocity.y += this.gravity;
+    this.y += this.velocity.y;
     this.x += this.velocity.x;
     this.lifetime -= 2;
   }

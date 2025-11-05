@@ -1,12 +1,16 @@
-class Confetti extends Particle{
-  constructor(x,y) {
+class Confetti extends Particle {
+  constructor(x, y, color) {
     super(x, y, color);
     this.size = 5;
     
   }
   draw() {
-    stroke(255);
+    push();
+    translate(this.x, this.y)
+    rotate(random(TWO_PI))
+    stroke(this.color);
     strokeWeight(5);
-    square(this.x,this.y,this.size)
+    square(0, 0, this.size)
+    pop();
   }
 }

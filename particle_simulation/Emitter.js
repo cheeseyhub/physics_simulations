@@ -7,7 +7,7 @@ class Emitter {
   }
   emit() {
     this.particles.push(new Particle(this.x, this.y, this.color));
-    this.particles.push(new Confetti(this.x, this.y, this.color));
+    // this.particles.push(new Confetti(this.x, this.y, this.color));
     this.removeParticles();
     this.updateParticles();
   }
@@ -18,6 +18,13 @@ class Emitter {
       }
     });
   }
+
+  applyForce(force) {
+    this.particles.forEach((particle) => {
+      particle.applyForce(force);
+    });
+  }
+
   updateParticles() {
     this.particles.forEach((particle) => {
       particle.draw();

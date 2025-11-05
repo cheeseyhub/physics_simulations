@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "types": [
+      "p5"
+    ],
+    "allowJs": true,
+    "noEmit": true
+  },
+  "include": [
+    "*.js",
+    "**/*.js",
+    "*.ts",
+    "../node_modules/@types/p5/global.d.ts"
+  ]
+}
