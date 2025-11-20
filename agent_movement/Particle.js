@@ -20,9 +20,8 @@ class Particle {
       force.sub(this.velocity);
       force.limit(this.maxForce);
     } else {
+      force.setMag(force.mag() / this.proximity);
       force.sub(this.velocity);
-      force.limit(this.maxForce);
-      force.mult(0.08);
     }
     this.applyForce(force);
   }
@@ -32,7 +31,6 @@ class Particle {
 
   move() {
     this.pos.add(this.velocity);
-    this.velocity.mult(0.9);
     this.velocity.add(this.acceleration);
     this.acceleration.mult(0);
   }
