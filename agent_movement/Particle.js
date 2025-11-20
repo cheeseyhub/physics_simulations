@@ -15,14 +15,10 @@ class Particle {
 
   seek(otherParticle) {
     let force = p5.Vector.sub(otherParticle.pos, this.pos);
-    if (this.pos.dist(otherParticle.pos) > this.proximity) {
-      force.setMag(this.maxVelocity);
-      force.sub(this.velocity);
-      force.limit(this.maxForce);
-    } else {
-      force.setMag(force.mag() / this.proximity);
-      force.sub(this.velocity);
-    }
+    //The body will move according to the ratio of the distance
+    force.setMag(force.mag() / this.proximity);
+    force.sub(this.velocity);
+    force.limit(this.maxForce);
     this.applyForce(force);
   }
   applyForce(force) {
