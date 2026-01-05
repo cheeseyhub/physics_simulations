@@ -1,18 +1,19 @@
-let particle1;
-let target = {
-  pos: {},
-};
-
+let vechile1;
+let target;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  particle1 = new Particle(0, 0, 16, 255);
+  vechile1 = new Vechile(0, 0, 16, 255);
+  target = new Vechile(windowWidth / 2, windowHeight / 2, 16, 255);
 }
 
 function draw() {
+  target.pos.x = mouseX;
+  target.pos.y = mouseY;
   background(0);
-  target.pos = createVector(mouseX, mouseY);
-  particle1.draw();
-  particle1.move();
-  particle1.seek(target);
+  vechile1.draw();
+  vechile1.move();
+  let force = vechile1.pursue(target);
+  vechile1.applyForce(force);
+  vechile1.edges();
 }
