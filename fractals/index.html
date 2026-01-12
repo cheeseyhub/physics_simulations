@@ -47,25 +47,26 @@
 
                 ctx.save();
                 ctx.rotate(rotation);
-                drawBranch(level - 1, rotation, scale);
+                drawBranch(level - 1, rotation, scale,branchSize);
                 ctx.restore();
 
                 ctx.save();
                 ctx.rotate(-rotation);
-                drawBranch(level - 1, rotation, scale);
+                drawBranch(level - 1, rotation, scale,branchSize);
                 ctx.restore();
 
                 ctx.restore();
             }
             function drawFractal(SIDES) {
+                ctx.save();
                 ctx.translate(canvas.width - 500 / 2, canvas.height / 2);
                 for (let i = 0; i < SIDES; i++) {
                     ctx.rotate((Math.PI * 2) / SIDES);
-                    drawBranch(10, 1.4, 0.8);
+                    drawBranch(4, 0.3, 0.8,20);
                 }
                 ctx.restore();
             }
-            drawFractal(15);
+            drawFractal(6);
         </script>
     </body>
 </html>

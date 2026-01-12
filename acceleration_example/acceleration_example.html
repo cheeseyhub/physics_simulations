@@ -1,0 +1,57 @@
+<html>
+    <head lang="en">
+        <meta name="viewport" content="width=device-width, initial-scale=0" />
+        <title>Example of acceleration</title>
+    </head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+    <body>
+        <canvas id="canvas"></canvas>
+    </body>
+
+    <script>
+
+        function drawPoint(ctx, x, y, radius, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+
+        const canvas = document.getElementById("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const ctx = canvas.getContext("2d");
+
+
+        let point1 = { x: canvas.width / 2, y: canvas.height / 2 };
+
+        let theta = 0;
+        let angularVelocity = Math.PI / 180;
+
+        function draw() {
+            let offsetX = 100 * Math.cos(theta);
+            let offsetY = 100 * Math.sin(theta);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPoint(ctx, point1.x + offsetX, point1.y + offsetY, 2, "white");
+            ctx.strokeStyle = "white";
+            ctx.stroke();
+
+            theta += angularVelocity;
+            requestAnimationFrame(draw);
+        }
+        window.requestAnimationFrame(draw);
+    </script>
+</html>
